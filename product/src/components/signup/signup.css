@@ -1,3 +1,85 @@
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: rgba(128, 128, 128, 0.082);
+}
+
+.content-div{
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(40vw);
+    min-width: 270px;
+    background-color: white;
+    margin-top: 40px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    padding: 10px 10px;
+}
+
+.content-div>h3{
+    padding-top: 10px;
+    font-weight: 600;
+}
+input{
+    width: 100%;
+    padding: 5px 10px;
+    margin-top: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.11);
+    background-color: transparent;
+    border-radius: 5px;
+}
+input:focus{
+    outline: 2px solid dodgerblue;
+}
+.names-inp{
+    display: flex;
+    gap: 3%;
+}
+
+.btn-div{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.signup-btn{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color:#0084ff ;
+    color: rgb(255, 255, 255);
+    border: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    border-radius: 5px;
+}
+.signup-btn:hover{
+    background-color:#065eb1 ;
+}
+
+.error-alert{
+    background-color: rgba(0, 0, 0, 0.384);
+    position: absolute;
+    height: calc(100vh);
+    width: calc(100vw); 
+    top: 0;
+    display: none;
+    justify-content: right;
+    align-items: flex-start;
+    padding: 15px 15px;
+}
+
+.err-close{
+    color: red;
+    padding: 0px 3px;
+}
+.err-close:hover{
+    cursor: pointer;
+    border-radius: 100%;
+    border: 1px solid red;
+}
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 
 body{
@@ -122,61 +204,24 @@ button{
     padding-left: 2px;
   }
 
-
-
-@media screen and (max-width:800px) {
+@media screen and (max-width:660px) {
     .sub-div{
-        width: calc(50vw) !important;
+        width: calc(70vw);
     }
-
-
+    
 }
 
-@media screen and (max-width:650px) {
+@media screen and (max-width:350px) {
     .sub-div{
-        width: calc(70vw) !important;
-    }
-
-    .error-div{
-        width: calc(60vw);
-    }
-
-
-}
-
-@media screen and (max-width:450px) {
-    .sub-div{
-        width: calc(80vw) !important;
-    }
-
-    .name-div input{
-        width: 90%;
-    }
-
-    .name-div input:nth-child(2){
-        margin-left: 0px;
-        
-    }
-
-    .error-div{
-        width: calc(80vw);
-    }
-
-}
-
-
-@media screen and (max-width:320px) {
-    .sub-div{
-        width: calc(90vw) !important;
-    }
-    button{
-        padding: 5px 20px;
-    }
-
-    .error-div{
         width: calc(90vw);
     }
 
+    .sub-div h3{
+        font-size: 18px;
+    }
+
+    a{
+        font-size: 12px;
+    }
+    
 }
-
-

@@ -5,6 +5,8 @@ import {useNavigate} from "react-router-dom"
 import { storage } from '../../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import {v4} from "uuid"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Toast from 'react-bootstrap/Toast';
 
 let baseUrl = ""
 if (window.location.href.split(":")[0] === "http") {
@@ -12,7 +14,7 @@ if (window.location.href.split(":")[0] === "http") {
   
 }
 else{
-    baseUrl = "https://the-chat-app-production.up.railway.app/"
+    baseUrl = "the-chat-app-production.up.railway.app"
   }
 
 function Signup() {
@@ -28,6 +30,7 @@ function Signup() {
     const [email,setEmail] =useState ("") 
     const [password,setPassword] =useState ("") 
     let navigate = useNavigate();
+    const [showError,setShowError] = useState (""); 
     const [imageUpload,setImageUpload] =useState (null) 
 
 
@@ -39,24 +42,25 @@ function Signup() {
 
 
     const signUpHandler = (event)=>{
-        event.preventDefault()
+        event.preventDefault();
         let errorDiv = document.getElementById("error")
         let alertDiv = document.getElementById("alert")
 
-        let imageRef = ref(storage,`profileImages/${imageUpload?.name + v4()}`);
+        // let imageRef = ref(storage,`profileImages/${imageUpload?.name + v4()}`);
 
-    uploadBytes(imageRef, imageUpload).then((snapshot) =>{
-      console.log("Firebase Storage",snapshot)
+    // uploadBytes(imageRef, imageUpload).then((snapshot) =>{
+    //   console.log("Firebase Storage",snapshot)
 
-      getDownloadURL(snapshot.ref)
-      .then((url) =>{
-        console.log("ImageURL", url)
+    //   getDownloadURL(snapshot.ref)
+    //   .then(
+        // () =>{
+        // console.log("ImageURL", url)
             axios.post(`${baseUrl}/api/v1/signup`, {
                 firstName: firstName,
                 lastName: lastName,
                 email:email,
                 password:password,
-                profileImage:url
+                profileImage:null
             })
 
             .then((response) => {
@@ -67,29 +71,23 @@ function Signup() {
 
             }, (error) => {
                 console.log(error);
-                alertDiv.style.display = "block"
-                errorDiv.textContent = error?.response?.data?.message
+            console.log(error.message)
+            alertDiv.style.display = "flex";
+            setShowError(error.message);
             });
 
-        })
-        .catch((e) =>{
-            console.log("Image Url Error", e)
+        // }
+        // )
+    //     .catch((e) =>{
+    //         console.log("Image Url Error", e)
+    // 
+    //     })
     
-        })
-    
-    })
-    .catch((e) =>{
-      console.log("Storage Error", e)
-
-    })
-
-      
-
-        
-      
-
-
-
+    // })
+//     .catch((e) =>{
+//       console.log("Storage Error", e)
+// 
+//     })
     }
     
     const closeHandler = () =>{
@@ -100,32 +98,22 @@ function Signup() {
 
 
     return (
+<div className='main-div'>
+            <div className="error-alert" id="alert">
+            <Toast >
+            <Toast.Header closeButton={false}>
+              <strong className="me-auto">Error</strong>
+              <small className="err-close" onClick={closeHandler} closeButton={false}>X</small>
+            </Toast.Header>
+            <Toast.Body>{showError}</Toast.Body>
+          </Toast>
 
-        <div className='main-div'>
-            <nav className='nav'>
-                <img src="https://img.icons8.com/fluency/512/twitter.png" alt="" height="40" width="40" />
+          </div>
 
-                <div className='right-side'>
-                    <a href="/">Login</a>
-                    <a href="/signup">Sign Up</a>
-
-                </div>     
-            </nav>           
-            <div className="alerts-div" id="alert">
-                <div className="error-div">
-                    <p id="error"></p>
-                    <button onClick={closeHandler}>Ok</button>
-
-                </div>
-
-
-            </div>
-
-
-            <div className='sub-div'>
-                <h3>Register Yourself</h3>
+            <div className='content-div'>
+                <h3>Register</h3>
                 <form onSubmit={signUpHandler}>
-                    <div className="name-div">
+                    <div className="names-inp">
                         <input ref={firstRef} type="text" placeholder="First Name" required onChange={(e) =>{
                             setFirstName(e.target.value)
 
@@ -138,7 +126,7 @@ function Signup() {
                     </div>
 
                     
-                    <input ref={thirdRef} className="mail-input" type="email" placeholder="Enter Email" required onChange={(e) =>{
+                    <input ref={thirdRef} className="inp-email" type="email" placeholder="Enter Email" required onChange={(e) =>{
                             setEmail(e.target.value)
 
                         }} />
@@ -146,18 +134,14 @@ function Signup() {
                             setPassword(e.target.value)
 
                         }} />
-                    <label className="profileImg">Profile Picture</label>
-
-                    <input ref={fifthRef} type="file" required  name='profilePic' accept='image/png, image/jpg, image.jpeg'  id='imgInput' onChange={(e) => {
-                            setImageUpload(e.target.files[0])
-                    }}/>
-
-                    <button type="submit">Register</button>
+                    {/* <input ref={fifthRef} type="file" required  name='profilePic' accept='image/png, image/jpg, image.jpeg'  id='imgInput' onChange={(e) => {
+                       setImageUpload(e.target.files[0])
+                    }}/> */}
+                    <div className="btn-div">
+                    <button className="signup-btn" type="submit">Sign UP</button>
+                    </div>
                 </form>
-                <a href="/">Already have an account LogIn.</a>
-
-                
-                
+                <a href="/">Already have an account? Login</a>
 
             </div>
           

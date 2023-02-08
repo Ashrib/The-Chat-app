@@ -7,14 +7,15 @@ import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBZUi86hqSvHtTyaI8KmU-nbvXbLFNr3vk",
-  authDomain: "fir-bucket-e9bc8.firebaseapp.com",
-  projectId: "fir-bucket-e9bc8",
-  storageBucket: "fir-bucket-e9bc8.appspot.com",
-  messagingSenderId: "820047963456",
-  appId: "1:820047963456:web:be5d19c5cefda019b646a5",
-  measurementId: "G-HV11L65L35"
+  apiKey: "AIzaSyDA6gHTvwUMXrVph3Mrt9uAiIKhTR_ucN0",
+  authDomain: "twitter-files-uploading.firebaseapp.com",
+  projectId: "twitter-files-uploading",
+  storageBucket: "twitter-files-uploading.appspot.com",
+  messagingSenderId: "285264843611",
+  appId: "1:285264843611:web:baabe0014e1f2f04edc07e",
+  measurementId: "G-JZ6S2F3YVQ"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
