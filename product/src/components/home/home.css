@@ -1,0 +1,221 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+body{
+    overflow: hidden;
+}
+.home-subDiv{
+    width: 100%;
+    background-color: #ECE5DD;
+    height: 100vh;
+
+}
+
+.homeNav{
+    background-color: rgba(255, 255, 255, 0.637);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 35%;
+    padding: 10px;
+    z-index: 2;
+    border-right: 1px solid rgba(128, 128, 128, 0.377);
+    display: flex;
+    flex-direction: row;
+}
+
+.homeNav img{
+    -ms-transform: translateZ(0); /* IE 9 */
+    -webkit-transform: translateZ(0); /* Chrome, Safari, Opera */
+    transform: translateZ(0);
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;         /* Firefox */
+    image-rendering:   -o-crisp-edges;         /* Opera */
+    image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
+    border-radius: 50%;
+}
+
+.menu{
+    float: right;
+    margin-top: 8px;
+    font-weight: bolder;
+    font-size: 25px;
+    cursor: pointer;
+    color: black;
+
+}
+.left-pannel{
+    width: calc(35vw);
+    padding-left: 20px;
+    background-color: white;
+    overflow-y: scroll;
+    height: 90vh;
+
+}
+.left-pannel form{
+    display: flex;
+}
+.left-pannel input{
+    width: 90%;
+    display: flex;
+    border: none;
+    background-color: rgba(128, 128, 128, 0.158);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 8px 20px  !important;
+    margin-right: 10px;
+
+    
+}
+
+.left-pannel input:focus{
+    box-shadow: none !important;
+    background-color: rgba(128, 128, 128, 0.158);
+
+
+}
+
+.left-pannel input:focus::placeholder{
+    color: rgba(128, 128, 128, 0) !important;
+
+}
+
+.search-btn{
+    border: none !important;
+    color: #3f3f3f !important;
+    background-color: rgba(128, 128, 128, 0.158) !important;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+    padding-left: 20px !important;
+}
+
+.userListItem a{
+    text-decoration: none;
+
+}
+
+.user{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.185);
+
+}
+
+
+
+.user:hover{
+    background-color: rgba(128, 128, 128, 0.13);
+}
+.user img{
+    -ms-transform: translateZ(0); /* IE 9 */
+    -webkit-transform: translateZ(0); /* Chrome, Safari, Opera */
+    transform: translateZ(0);
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;         /* Firefox */
+    image-rendering:   -o-crisp-edges;         /* Opera */
+    image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
+    border-radius: 50%;
+
+}
+
+.user p{
+    color: #3f3f3f;
+    text-transform: capitalize;
+    font-weight: 500;
+    position: relative;
+    top: -8px;
+    padding-left: 15px;
+    text-decoration:none;
+
+
+}
+.drop{
+    margin-left: auto !important;
+    padding: 0 !important;
+}
+
+.dropToggle{
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: rgba(255, 255, 255, 0.637) !important;
+    border: none !important;
+}
+
+.dropToggle:hover{
+    background-color: rgba(255, 255, 255, 0.637) !important;
+}
+
+.dropToggle:focus{
+    background-color: rgba(255, 255, 255, 0.637) ;
+}
+    
+.dropToggle::after{
+    content: none !important;
+}
+
+.notificationView{
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px
+    
+}
+
+.item a{
+    color: #3f3f3f !important;
+    text-decoration: none !important;
+
+
+}
+
+.close{
+    float: right;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    
+}
+
+.onlineDot{
+    position: relative;
+    top: 15px;
+    margin-left: auto;
+}
+
+@media screen and (max-width:800px) {
+    .homeNav{
+        width:calc(60vw)
+
+
+    }
+    .left-pannel{
+        width:calc(60vw)
+    }
+    
+}
+
+@media screen and (max-width:550px) {
+    .homeNav{
+        width:calc(80vw)
+
+
+    }
+    .left-pannel{
+        width:calc(80vw)
+    }
+    
+}
+
+@media screen and (max-width:350px) {
+    .homeNav{
+        width:calc(100vw);
+
+
+
+    }
+    .left-pannel{
+        width:calc(100vw);
+    
+
+    }
+    
+}

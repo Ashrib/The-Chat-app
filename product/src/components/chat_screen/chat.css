@@ -1,0 +1,308 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+body{
+    background-color: white !important;
+
+}
+
+.chat-subDiv{
+    width: 100%;
+    height: 100vh;
+}
+
+.chatNav{
+    background-color: rgba(128, 128, 128, 0.158);
+    padding: 10px 20px;
+    display: flex;
+    width: 100%;
+    
+}
+
+.chatNav img{
+    -ms-transform: translateZ(0); /* IE 9 */
+    -webkit-transform: translateZ(0); /* Chrome, Safari, Opera */
+    transform: translateZ(0);
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;         /* Firefox */
+    image-rendering:   -o-crisp-edges;         /* Opera */
+    image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
+    border-radius: 50%;
+
+}
+
+.chatNav p{
+    position: relative;
+    top: -5px;
+    color: #3f3f3f;
+    font-weight: 500;
+    text-transform: capitalize;
+
+}
+
+.chatBox{
+    background-color: #ece5dd;
+    /* padding-bottom: 20px; */
+    border-radius: 10px;
+   
+   
+}
+
+.messagesDiv{
+    margin-top: 10px;
+    padding-top: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(75vh);
+    display: flex;
+    flex-direction: column;
+
+
+
+}
+
+.myMsg{
+    background-color: #25d36549;
+    padding: 0px 10px;
+    margin-right: 20px;
+    margin-top: 12px;
+    border-radius: 15px 15px 0px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    max-width: 50%;
+    margin-left: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    float: right;
+
+
+}
+
+.myMsgTxt{
+    font-weight: 400;
+    color: black;
+    padding: 6px 0px !important;
+    margin: 0px !important;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    word-break: break-all;
+
+
+    
+}
+
+.myTime{
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.726);;
+    font-weight: bold;
+    padding-left: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+}
+
+.recipientMsg{
+    margin-right: 20px;
+    margin-top: 12px;
+    margin-left: 10px;
+    max-width: 50%;
+
+ 
+
+}
+
+
+
+.resMsgTxt{
+    font-weight: 400;
+    color: black;
+    padding: 6px 10px !important;
+    margin: 0px !important;
+    font-size: 16px;
+    display: inline-flex;
+    flex-direction: column;
+    word-break: break-all;
+    background-color: white;
+    padding: 0px 10px;
+    border-radius: 15px 15px 0px 15px;
+
+
+
+
+ 
+}
+
+.resTime{
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.726);;
+    font-weight: bold;
+    padding-left: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+
+   
+
+
+ 
+}
+
+.sentMsgDiv{
+    background-color: rgba(128, 128, 128, 0.164);
+    padding: 8px 10px;
+    margin-top: 20px;
+
+}
+
+.sentMsgDiv input{
+    margin: 0 !important;
+}
+
+.sentMsgDiv input::placeholder{
+    text-transform: none !important;
+    color: gray;
+}
+.sentMsgDiv input:focus{
+    outline: none;
+}
+
+
+.sentBtn{
+    color: gray;
+    font-weight: bolder;
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+.sentMsgDiv button{
+    padding: 0px;
+    margin: 0px;
+    display: inline;
+    background-color:rgba(128, 128, 128, 0)
+}
+
+.homeLink{
+    margin-left: auto;
+    padding-top: 15px;
+    font-weight: bold;
+    color: dodgerblue;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+}
+
+.homeLink:hover{
+    color: dodgerblue;
+}
+
+.chatNotificationView{
+    position: absolute !important;
+    bottom: 0;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    z-index: 2;
+
+}
+
+.visibility{
+    display: none;
+}
+
+.onlineStatus{
+    position: relative !important;
+    top: 14px !important;
+    left: -90px !important;
+    font-size: 12px;
+    font-weight: bold !important;
+    color: gray !important;
+    letter-spacing: 0.08em;
+
+}
+
+.recipientMsg:hover .chatDrop{
+    visibility: visible;
+
+}
+
+
+
+.msgMenu{
+    float: right;
+    color: dodgerblue;
+    font-size: 18px;
+    cursor: pointer;
+   
+}
+
+.chatDrop{
+    padding: 0 !important;
+    margin-left: auto !important;
+    visibility: hidden;
+
+
+   
+   
+
+}
+
+.chatDropToggle{
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    background-color:white !important;
+
+}
+
+.chatDropToggle::after{
+    content: none !important;
+}
+
+@media screen and (max-width:900px) {
+    .chatBox{
+        width: calc(80vw);
+    }
+  
+}
+
+
+@media screen and (max-width:700px) {
+    .chatBox{
+        width: calc(100vw);
+    }
+    
+}
+
+@media screen and (max-width:500px) {
+    .myMsg{
+        max-width: 65%;
+       
+    }
+
+    .recipientMsg{
+        max-width: 65%;
+    }
+
+  
+
+}
+
+
+@media screen and (max-width:400px) {
+    .myMsg{
+        max-width: 80%;
+       
+    }
+
+    .recipientMsg{
+        max-width:80%;
+    }
+
+    .sentMsgDiv input{
+        width: 85%;
+    }
+    
+  
+
+}
+
+
+
