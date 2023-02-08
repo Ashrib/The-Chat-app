@@ -7,10 +7,10 @@ import { useParams } from "react-router-dom";
 import { FaUserCircle } from 'react-icons/fa';
 import { BsChevronDown} from 'react-icons/bs';
 import { RxPaperPlane} from 'react-icons/rx';
+import { BiArrowBack} from 'react-icons/bi';
 import { io } from "socket.io-client";
 import Toast from 'react-bootstrap/Toast';
 import { Link } from "react-router-dom";
-import boopSfx from "../../assets/notification.mp3";
 import Spinner from 'react-bootstrap/Spinner';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -38,7 +38,6 @@ function ChatScreen() {
     const [conversation, setConversation] = useState(null);
     const [recipientProfile, setRecipientProfile] = useState({});
     const [show, setShow] = useState(true);
-    const audio = new Audio(boopSfx);
     const [notifications, setNotifications] = useState([]);
     const [deleteForMe, setDeleteForMe] = useState(null)
 
@@ -99,7 +98,6 @@ function ChatScreen() {
         socket.on(`personal-channel-${state.user._id}`, function (data) {
             console.log("socket push data: ", data);
             setNotifications(prev => [...prev, data])
-            audio.play()
         });
 
 
@@ -157,43 +155,28 @@ function ChatScreen() {
 
 
     return (
-        <div className="main-div">
-            <div className="chat-subDiv">
-               
-                <div className="chatNav">
-                  <img src={(!recipientProfile.profileImage)?"https://img.icons8.com/material-rounded/256/user.png":recipientProfile?.profileImage} alt="users profile" height="45" width="45" />
-                  <p>{recipientProfile?.firstName} {recipientProfile?.lastName}</p> 
-                  <p className="onlineStatus">{(recipientProfile?.isOnline === true)? "Online" : "Offline"}</p>
-                  <a href="/" className="homeLink">Back</a>
-
+        <div className="main-container">
+            <div className="chat-header">
+                <div>
+                    <img className="prf-img" src={(!recipientProfile.profileImage)?"https://img.icons8.com/material-rounded/256/user.png":recipientProfile?.profileImage} alt="users profile" height="45" width="45" />
+                    <p>{recipientProfile?.firstName} {recipientProfile?.lastName}</p> 
+                    <p>{(recipientProfile?.isOnline === true)?
+                     <span className="status">(Online)</span> : 
+                     <span className="status">(Offline)</span>
+                     }</p>
                 </div>
-                <div className='chatNotificationView' >
-                    {
-                    notifications.map((eachNotification, index) => {
-                        return <div key={index} className="item">
-                                    <Toast style={{marginTop:"10px"}}>
-                                    <strong className="me-auto" style={{paddingLeft:"10px" ,fontSize:"18px", paddingTop:"20px", textTransform:"capitalize"}}>{eachNotification.from.firstName} {eachNotification.from.lastName}</strong>
-                                    <div onClick={() => { dismissNotification(eachNotification) }} className="close"> X </div>
-                                    <a href={`/chat/${eachNotification.from._id}`}>
-                                        <Toast.Body>{eachNotification.text.slice(0, 100)}</Toast.Body>
-                                    </a>
-
-                                    </Toast>
-                        
-                                </div>
-                    })
-                    }
-
-                  </div>
-
-                <div className="chatBox">
-                    <div className="messagesDiv">
-                        {(conversation?.length) ?
-                            conversation?.map((eachMessage, index) => {
+                <a href="/" className="homeLink">
+                    <BiArrowBack style={{fontSize:'1.7em'}} title='Home'/>
+                </a>
+            </div>
+            <div className="chat-body">
+                <div className="messages-box">
+                    {(conversation?.length) ?
+                        conversation?.map((eachMessage, index) => {
 
                                 return <div key={index}>
                                             {(eachMessage.from.firstName == state.user.firstName && eachMessage.from.lastName == state.user.lastName)?
-                                                <div className="myMsg">
+                                                <div className="myMsg msg">
                                                     <div className="myMsgTxt">{eachMessage.text} </div>
                                                     <div className="myTime">{moment(eachMessage.createdOn).fromNow()}</div>
 
@@ -237,28 +220,26 @@ function ChatScreen() {
                                             }
 
                                         </div>
-                            })
-                            : null
-                        }
+                        })
+                        : null
+                    }
                         
                         {(conversation?.length === 0 ? "Start chatting with your first message..." : null)}
                         <div style={{position:"absolute", top:"50%",left: "50%"}}>
                             {(conversation === null ? <Spinner animation="grow" variant="primary" /> : null)}
                         </div>
 
-                    </div>
-                        <div className="sentMsgDiv">
-                            <form onSubmit={sendMessage}>
-                                <input type="text" placeholder='Type a message' onChange={(e) => [
-                                    setWriteMessage(e.target.value)
-                                ]} required maxLength="200"/>
-                            <button type="submit"><RxPaperPlane  className="sentBtn"/></button>
-                            </form>
-                        </div>
+                </div>
+                <div className="message-sent">
+                    <form onSubmit={sendMessage}>
+                        <input type="text" placeholder='Type a message' onChange={(e) => [
+                            setWriteMessage(e.target.value)
+                        ]} required maxLength="200"/>
+                    <button type="submit"><RxPaperPlane  className="sentBtn"/></button>
+                    </form>
                 </div>
                 
             </div>
-
         </div>
     );
 }

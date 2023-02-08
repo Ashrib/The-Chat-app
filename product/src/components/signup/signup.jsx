@@ -37,10 +37,6 @@ function Signup() {
 
 
 
-
-
-
-
     const signUpHandler = (event)=>{
         event.preventDefault();
         let errorDiv = document.getElementById("error")

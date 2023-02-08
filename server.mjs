@@ -234,11 +234,6 @@ app.put("/api/v1/deleteCoverPhoto", async (req, res) =>{
                 message: "cover image remove success",
             });
         }
-
-
-
-  
-        
       
         return;
 
@@ -279,8 +274,6 @@ app.delete('/api/v1/deleteAccount/:deleteAccountEmail', (req, res) => {
         }
     });
   
-
-    
 })
 
 
@@ -431,7 +424,7 @@ const server = createServer(app);
 // handing over server access to socket.io
 const io = new socketIo(server, {
     cors: {
-        origin: ["http://localhost:3001", "https://chat-app-with-socketio-production.up.railway.app"],
+        origin: ["http://localhost:3001", "the-chat-app-production.up.railway.app"],
         credentials: true
     }
 });
