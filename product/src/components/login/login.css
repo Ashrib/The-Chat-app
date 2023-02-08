@@ -1,108 +1,79 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 
 body{
     margin: 0px;
     padding: 0px;
-    font-family: 'Roboto', sans-serif;
-    background-color: rgba(128, 128, 128, 0.082);
-    
+    background-color: rgba(138, 138, 138, 0.082);
 }
-
-.sub-div{
-    margin-left: auto;
-    margin-right: auto;
-    width: calc(40vw);
-    background-color: white;
+.main-div{
+    font-family: Arial, Helvetica, sans-serif, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.content-div{
+    width: calc(35vw);
+    min-width: 270px;
+    background-color: rgb(255, 255, 255) ;
     padding-left: 10px;
-    margin-top: 40px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     padding-bottom: 20px;
-
-
-
 }
 
-h3{
+.content-div>h3{
     padding-top: 10px;
-    text-align: center;
-    text-transform: capitalize;
-    color: #27272a;
+    font-weight: 600;
 }
-
-
-input{
+form>input{
     width: 90%;
     padding: 5px 10px;
-    margin-top: 20px;
     border: 1px solid rgba(0, 0, 0, 0.11);
-    background-color: white;
+    background-color: transparent;
     border-radius: 5px;
- 
 }
-
-input::placeholder{
-    color: #27272a;
-    text-transform: capitalize;
-  
-
-}
-
 input:focus{
     outline: 2px solid dodgerblue;
 }
 
-.mail-nput{
+.inp-email{
     margin-top: 20px;
 }
 
-button{
+.login-btn{
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 20px;
-    padding: 5px 45px;
-    background-color:#27272a ;
-    color: white;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color:#0084ff ;
+    color: rgb(255, 255, 255);
     border: none;
-    font-weight: bold;
-    font-size: 18px;
-    letter-spacing: 0.2em;
+    font-weight: 600;
+    font-size: 1.1em;
     border-radius: 5px;
 }
+.login-btn:hover{
+    background-color:#065eb1 ;
+}
 
-.alerts-div{
+.error-alert{
     background-color: rgba(0, 0, 0, 0.384);
     position: absolute;
     height: calc(100vh);
     width: calc(100vw); 
     top: 0;
     display: none;
-    
+    justify-content: right;
+    align-items: flex-start;
+    padding: 15px 15px;
 }
 
-.error-div{
-    background-color: white;
-    width: calc(40vw);
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-    border-radius: 5px;
-    padding-left: 10px;
-    font-weight: 500;
-    padding-bottom: 5px;
+.err-close{
     color: red;
-    padding-top: 5px;
-    text-align: center;
-    font-size: 14px;
-
-    
-
+    padding: 0px 3px;
 }
-
-.error-div button{
-    padding: 1px 40px;
-    font-size: 16px;
-    margin-top: 20px;
+.err-close:hover{
+    cursor: pointer;
+    border-radius: 100%;
+    border: 1px solid red;
 }
-
