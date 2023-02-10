@@ -22,7 +22,6 @@ if (window.location.href.split(":")[0] === "http") {
   baseUrl = "http://localhost:3000";
   
 }
-
 else{
   baseUrl = "https://the-chat-app-production.up.railway.app"
 }
@@ -155,8 +154,8 @@ function ChatScreen() {
 
 
     return (
-        <div className="main-container">
-            <div className="chat-header">
+    <div className="main-container">
+    <div className="chat-header">
                 <div>
                     <img className="prf-img" src={(!recipientProfile.profileImage)?"https://img.icons8.com/material-rounded/256/user.png":recipientProfile?.profileImage} alt="users profile" height="45" width="45" />
                     <p>{recipientProfile?.firstName} {recipientProfile?.lastName}</p> 
@@ -168,79 +167,79 @@ function ChatScreen() {
                 <a href="/" className="homeLink">
                     <BiArrowBack style={{fontSize:'1.7em'}} title='Home'/>
                 </a>
-            </div>
-            <div className="chat-body">
-                <div className="messages-box">
-                    {(conversation?.length) ?
-                        conversation?.map((eachMessage, index) => {
+    </div>
+    <div className="chat-body">
+        <div className="messages-box">
+            {(conversation?.length) ?
+                conversation?.map((eachMessage, index) => {
 
-                                return <div key={index}>
-                                            {(eachMessage.from.firstName == state.user.firstName && eachMessage.from.lastName == state.user.lastName)?
-                                                <div className="myMsg msg">
-                                                    <div className="myMsgTxt">{eachMessage.text} </div>
-                                                    <div className="myTime">{moment(eachMessage.createdOn).fromNow()}</div>
+                return <div key={index}>
+                        {(eachMessage.from.firstName == state.user.firstName && eachMessage.from.lastName == state.user.lastName)?
+                            <div className="myMsg msg">
+                                <div className="myMsgTxt">{eachMessage.text} </div>
+                                <div className="myTime">{moment(eachMessage.createdOn).fromNow()}</div>
 
-                                                </div> 
-                                                :
-                                                    <div className={(eachMessage?.visibility !== true) ? "visibility" : "recipientMsg"}>
-                                                        <div className= "resMsgTxt">
-                                                                <Dropdown className="chatDrop">
-                                                                    <Dropdown.Toggle variant="secondary" className="chatDropToggle">
-                                                                        <BsChevronDown className="msgMenu"/>
-                                                                    </Dropdown.Toggle>
+                            </div> 
+                            :
+                                <div className={(eachMessage?.visibility !== true) ? "visibility" : "recipientMsg"}>
+                                    <div className= "resMsgTxt">
+                                            <Dropdown className="chatDrop">
+                                                <Dropdown.Toggle variant="secondary" className="chatDropToggle">
+                                                    <BsChevronDown className="msgMenu"/>
+                                                </Dropdown.Toggle>
 
-                                                                    <Dropdown.Menu variant="dark">
-                                                                        <Dropdown.Item onClick={ () =>{deleteMsgForMeHandler(eachMessage?._id)  }}>
-                                                                            Delete for me
-                                                                        </Dropdown.Item>
-                                                                        <Dropdown.Item>
-                                                                            Delete for everyone
-                                                                        </Dropdown.Item>
-                                                                    </Dropdown.Menu>
-                                                                </Dropdown>
+                                                <Dropdown.Menu variant="dark">
+                                                    <Dropdown.Item onClick={ () =>{deleteMsgForMeHandler(eachMessage?._id)  }}>
+                                                        Delete for me
+                                                    </Dropdown.Item>
+                                                    <Dropdown.Item>
+                                                        Delete for everyone
+                                                    </Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
 
-                                                           
-                                                            
-                                                            {eachMessage.text}
+                                       
+                                        
+                                        {eachMessage.text}
 
-                                                            {/* <button onClick={ () =>{
-                                                                deleteMsgForMeHandler(eachMessage?._id)
-                                                            }}>Delete</button> */}
-                                                             <div className="resTime">{moment(eachMessage.createdOn).fromNow()}</div>
-
-
-                                                        </div>
+                                        {/* <button onClick={ () =>{
+                                            deleteMsgForMeHandler(eachMessage?._id)
+                                        }}>Delete</button> */}
+                                         <div className="resTime">{moment(eachMessage.createdOn).fromNow()}</div>
 
 
+                                    </div>
 
-                                                    </div>
 
-                                                
 
-                                            }
+                                </div>
 
-                                        </div>
-                        })
-                        : null
-                    }
-                        
-                        {(conversation?.length === 0 ? "Start chatting with your first message..." : null)}
-                        <div style={{position:"absolute", top:"50%",left: "50%"}}>
-                            {(conversation === null ? <Spinner animation="grow" variant="primary" /> : null)}
+                            
+
+                        }
+
                         </div>
-
-                </div>
-                <div className="message-sent">
-                    <form onSubmit={sendMessage}>
-                        <input type="text" placeholder='Type a message' onChange={(e) => [
-                            setWriteMessage(e.target.value)
-                        ]} required maxLength="200"/>
-                    <button type="submit"><RxPaperPlane  className="sentBtn"/></button>
-                    </form>
-                </div>
+                })
+                : null
+            }
                 
-            </div>
+                {(conversation?.length === 0 ? "Start chatting with your first message..." : null)}
+                <div style={{position:"absolute", top:"50%",left: "50%"}}>
+                    {(conversation === null ? <Spinner animation="grow" variant="primary" /> : null)}
+                </div>
+
         </div>
+        <div className="message-sent">
+            <form onSubmit={sendMessage}>
+                <input type="text" placeholder='Type a message' onChange={(e) => [
+                    setWriteMessage(e.target.value)
+                ]} required maxLength="200"/>
+            <button type="submit"><RxPaperPlane  className="sentBtn"/></button>
+            </form>
+        </div>
+        
+    </div>
+    </div>
     );
 }
 
